@@ -1,0 +1,58 @@
+{% extends 'tab/base.html' %}
+
+{% block title %} Таблица учёта {% endblock %}
+
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th>Дата поставки</th>
+      <th>Артикул</th>
+      <th>Модель</th>
+      <th>Цвет</th>
+      <th>Размер</th>
+      <th>Состав</th>
+      <th>Поставили</th>
+      <th>На складе</th>
+      <th>Продавец</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in products %}
+        <tr>
+            <td>{{ p.date }}</td>
+            <td>{{ p.art }}</td>
+            <td>{{ p.model }}</td>
+            <td>{{ p.color }}</td>
+            <td>{{ p.size }}</td>
+            <td>{{ p.structure }}</td>
+            <td>{{ p.shipment }}</td>
+            <td>{{ p.remains }}</td>
+            <td>{{ p.seller }}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+<div class="form-style">
+<form action="/" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Отфильтровать</button>
+</form>
+</div>
+
+
+<div class="form-style">
+<form action="/" method="POST">
+        {% csrf_token %}
+        {{ form_date }}
+        <button type="submit">Отфильтровать</button>
+</form>
+</div>
+
+<a href="/add/">Добавить поставку</a>
+<br>
+<a href="/admin/tab/product/">Редактировать таблицу</a>
+{% endblock %}
