@@ -1,12 +1,11 @@
 {% extends 'tab/base.html' %}
 
 {% block title %} Таблица учёта {% endblock %}
-
 {% block content %}
+
 <table class="table">
   <thead>
     <tr>
-      <th>Дата поставки</th>
       <th>Артикул</th>
       <th>Модель</th>
       <th>Цвет</th>
@@ -18,9 +17,8 @@
     </tr>
   </thead>
   <tbody>
-    {% for p in products %}
+    {% for p in delivery %}
         <tr>
-            <td>{{ p.date }}</td>
             <td>{{ p.art }}</td>
             <td>{{ p.model }}</td>
             <td>{{ p.color }}</td>
@@ -34,25 +32,5 @@
   </tbody>
 </table>
 
-
-<div class="form-style">
-<form action="/" method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Отфильтровать</button>
-</form>
-</div>
-
-
-<div class="form-style">
-<form action="/" method="POST">
-        {% csrf_token %}
-        {{ form_date }}
-        <button type="submit">Отфильтровать</button>
-</form>
-</div>
-
-<a href="/add/">Добавить поставку</a>
-<br>
-<a href="/admin/tab/product/">Редактировать таблицу</a>
 {% endblock %}
+

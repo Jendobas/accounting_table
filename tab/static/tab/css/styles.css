@@ -79,3 +79,25 @@ button:active {
     display: block;
     margin-bottom: 0.5rem;
 }
+
+.table_a {
+  outline: none;
+  text-decoration: none;
+  display: inline-block;
+  width: 19.5%;
+  margin-right: 0%;
+  text-align: left;
+  line-height: 3;
+  color: black;
+}
+
+.table_home {
+	width: 400px;
+	margin-bottom: 20px;
+	border: 5px solid #fff;
+	border-top: 5px solid #fff;
+	border-bottom: 3px solid #fff;
+	border-collapse: collapse;
+	outline: 3px solid #ffd300;
+	font-size: 15px;
+	background: #fff!important;

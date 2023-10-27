@@ -1,6 +1,14 @@
 from django.db import models
 
 
+class Deliveries(models.Model):
+    date = models.DateField(auto_now_add=True)
+    comment = models.CharField(max_length=20, default='-')
+
+    def __str__(self):
+        return f'{self.date}'
+
+
 class Product(models.Model):
     GUM = 'GUM'
     SLAVUTINY = 'SLAVUTINY'
@@ -12,7 +20,6 @@ class Product(models.Model):
         (SALON, 'Салон'),
     ]
 
-    date = models.DateField(auto_now_add=True)
     art = models.CharField(max_length=20)
     model = models.CharField(max_length=80)
     color = models.CharField(max_length=20)
@@ -21,6 +28,7 @@ class Product(models.Model):
     shipment = models.IntegerField(default=1)  # поставили вещей
     count = models.IntegerField(default=0)  # всего вещей
     seller = models.CharField(max_length=10, choices=SELLERS, default=GUM)
+    date_name = models.ForeignKey(Deliveries, on_delete=models.PROTECT, null=True)
 
     def remains(self):
         if self.count < self.shipment:

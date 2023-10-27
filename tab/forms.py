@@ -5,7 +5,7 @@ from .models import Product
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('art', 'model', 'color', 'size', 'structure', 'shipment', 'count', 'seller')
+        fields = ('art', 'model', 'color', 'size', 'structure', 'shipment', 'count', 'seller', 'date_name')
 
 
 class Filter(forms.Form):

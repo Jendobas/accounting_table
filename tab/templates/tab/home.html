@@ -1,0 +1,47 @@
+{% extends 'tab/base.html' %}
+
+{% block title %} Таблица учёта {% endblock %}
+
+{% block content %}
+<!--{% for delivery in deliveries %}-->
+<!--<a href="{% url 'delivery_detail' delivery.id  %}">{{ delivery }}</a>-->
+<!--<br>-->
+<!--{% endfor %}-->
+<table class="table_home">
+  <thead>
+    <tr>
+      <th>Дата поставки</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for delivery in deliveries %}
+    <tr>
+        <td><a class="table_a" href="{% url 'delivery_detail' delivery.id  %}">{{ delivery }}</a></td>
+        <br>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<div class="form-style">
+    <form action="/" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Отфильтровать</button>
+    </form>
+</div>
+
+
+<div class="form-style">
+    <form action="/" method="POST">
+        {% csrf_token %}
+        {{ form_date }}
+        <button type="submit">Отфильтровать</button>
+    </form>
+</div>
+
+
+<a href="/add/">Добавить поставку</a>
+<br>
+<a href="/admin/tab/product/">Редактировать таблицу</a>
+{% endblock %}
